@@ -3,230 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CrediX</title>
+<title>CrediX - Unlock Your Cash Flow</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top, #0a0f1c, #020617);
-    color: white;
-    line-height: 1.6;
-}
-
-/* CONTAINER */
-.container {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-/* TYPOGRAPHY */
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-h2 {
-    margin-top: 60px;
-    font-weight: 600;
-    font-size: 1.8rem;
-}
-
-/* BUTTON */
-.btn {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    padding: 14px 26px;
-    border-radius: 12px;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37,99,235,0.3);
-}
-
-/* CARD (GLASSMORPHISM) */
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 28px;
-    border-radius: 18px;
-    backdrop-filter: blur(14px);
-    margin-top: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* FORM */
-input, textarea {
-    width: 100%;
-    padding: 14px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05);
-    color: white;
-    font-size: 14px;
-}
-
-/* BIG TEXT AREA */
-textarea {
-    min-height: 160px;
-    resize: vertical;
-}
-
-/* INPUT FOCUS */
-input:focus, textarea:focus {
-    outline: none;
-    border: 1px solid #2563eb;
-}
-
-/* HERO SECTION */
-.hero {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-/* URGENCY TEXT */
-.urgency {
-    color: #facc15;
-    font-weight: 500;
-}
-
-.counter {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 80px;
-    font-size: 14px;
-    opacity: 0.6;
-    text-align: center;
-}
-
-/* WHATSAPP BUTTON */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    padding: 14px 18px;
-    border-radius: 50px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    h1 { font-size: 2.2rem; }
-    .container { padding: 40px 15px; }
-}
-</style>
+<link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+  <img src="assets/logo.png" alt="CrediX Logo" class="logo">
+</div>
+
 <div class="container">
 
 <!-- HERO -->
-<div class="hero">
-<h1>Stop Waiting Months to Get Paid</h1>
-<p>Turn your unpaid invoices into cash in <b>24 to 72 hours.</b></p>
-<p>Built for Sri Lankan SMEs dealing with slow-paying customers.</p>
+<div class="hero glass">
+  <div class="hero-text">
+    <h1>Stop Waiting Months to Get Paid</h1>
+    <p>Turn your unpaid invoices into cash in <b>24–72 hours.</b></p>
+    <p>Built for Sri Lankan SMEs dealing with slow-paying customers.</p>
 
-<p class="urgency">⚠️ Limited early access – onboarding a small group only</p>
-<p class="counter">🔥 26 businesses already joined</p>
+    <p class="urgency">⚠️ Limited early access</p>
+    <p class="counter">🔥 26 businesses already joined</p>
 
-<a href="#form" class="btn">Get Early Access</a>
+    <a href="#form" class="btn">Get Early Access</a>
+  </div>
+
+  <div class="hero-visual"></div>
 </div>
 
 <!-- PROBLEM -->
+<div class="section">
 <h2>Delayed Payments Are Holding Your Business Back</h2>
-<div class="card">
-<p>• You’ve done the work… but still waiting to get paid</p>
-<p>• Cash flow gaps slow down operations</p>
-<p>• Overdrafts eat into profits</p>
+
+<div class="grid">
+  <div class="card glass">You’ve done the work but still waiting to get paid</div>
+  <div class="card glass">Cash flow gaps slow operations</div>
+  <div class="card glass">Overdrafts eat into profits</div>
+</div>
+
 <p><b>Your money is stuck in invoices.</b></p>
 </div>
 
-<!-- SOLUTION -->
-<h2>Unlock Your Cash Flow with CrediX</h2>
-<div class="card">
-<p>1. Upload your invoice</p>
-<p>2. Get approved quickly</p>
-<p>3. Receive funds in 24–72 hours</p>
-<p><b>No more waiting. No more chasing payments.</b></p>
-</div>
-
-<!-- TRUST -->
-<h2>Built for Trust from Day One</h2>
-<div class="card">
-<p>• Data-driven credit intelligence</p>
-<p>• Secure & verified invoice processing</p>
-<p>• Designed for Sri Lankan SMEs</p>
-<p><b>Future of SME financing in Sri Lanka</b></p>
-</div>
-
-<!-- SOCIAL -->
-<h2>Built for Businesses Like Yours</h2>
-<div class="card">
-<p>Currently onboarding early users across logistics, wholesale & import/export</p>
-<p style="color:#facc15;"><b>Early users get priority onboarding + discounts</b></p>
-</div>
-
 <!-- FORM -->
-<h2 id="form">Secure Your Spot in the First Batch</h2>
-<div class="card">
+<div class="section" id="form">
+<h2>Secure Your Spot in the First Batch</h2>
 
-<form action="https://forminit.com/f/cio3k0xg6ku" method="POST">
+<div class="form-card glass">
+
+<form action="https://api.forminit.com/io3k0xg6ku" method="POST">
 
   <input type="text" name="fi-sender-fullName" placeholder="Your Name" required>
   <input type="email" name="fi-sender-email" placeholder="Email Address" required>
-  <input type="tel" name="fi-sender-phone" placeholder="Phone Number with Country Code" required>
-  <textarea name="fi-text-message" required
-placeholder="Business Name:
-Industry (Logistics, Wholesale, Import / Export, Manufacturing):
-Monthly Revenue:
-Average Invoice Value:"></textarea>
+  <input type="tel" name="fi-sender-phone" placeholder="Phone Number" required>
 
-  <button class="btn submit-btn" type="submit">
-    Join the Waiting List
-  </button>
+  <textarea name="fi-text-message" placeholder="Business Name:
+Industry:
+Monthly Revenue:
+Invoice Value:" required></textarea>
+
+  <button class="btn" type="submit">Join the Waiting List</button>
 
 </form>
 
-<p style="font-size:12px; opacity:0.7;">
-We’re onboarding a limited number of SMEs. Priority given to active invoice businesses.
-</p>
-
 </div>
-
-<!-- FINAL CTA -->
-<h2>Get Paid Faster. Grow Without Limits.</h2>
-<a href="#form" class="btn">Get Early Access</a>
+</div>
 
 <!-- FOOTER -->
 <div class="footer">
-<p><b>CrediX</b></p>
-<p>Financing the future of SME cash flow</p>
-<p>contact@credix.lk</p>
+  <img src="assets/logo.png" class="footer-logo">
+  <p>Financing the future of SME cash flow</p>
+  <p>contact@credix.lk</p>
 </div>
 
 </div>
 
-<!-- WhatsApp -->
-<a class="whatsapp" href="https://wa.me/+94710838717">WhatsApp</a>
+<a class="whatsapp" href="https://wa.me/94710838717">WhatsApp</a>
 
 </body>
 </html>
