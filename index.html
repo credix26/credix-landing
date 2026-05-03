@@ -1,88 +1,1385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CrediX - Unlock Your Cash Flow</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrediX</title>
+  <meta name="description" content="Sri Lanka's first B2B invoice financing platform. Turn unpaid invoices into cash in 24–72 hours. No collateral. Built for Sri Lankan SMEs.">
+  <meta property="og:title" content="CrediX">
+  <meta property="og:description" content="Turn unpaid invoices into working capital in 24–72 hours. Built for Sri Lankan SMEs.">
+  <meta property="og:url" content="https://credix.lk">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    :root {
+      --bg:        #030C1A;
+      --bg1:       #061525;
+      --bg2:       #0A1F38;
+      --border:    rgba(255,255,255,0.07);
+      --border-hi: rgba(255,255,255,0.13);
+      --accent:    #00C896;
+      --accent-lo: rgba(0,200,150,0.10);
+      --accent-md: rgba(0,200,150,0.20);
+      --blue:      #4F7FFF;
+      --gold:      #F0B429;
+      --red:       #FF5252;
+      --t1: #EDF2F7;
+      --t2: #7A9BBE;
+      --t3: #334E6B;
+      --display: 'Epilogue', sans-serif;
+      --body:    'DM Sans', sans-serif;
+      --radius:  12px;
+      --radius-lg: 20px;
+    }
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--t1);
+      font-family: var(--body);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      height: 64px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(3,12,26,0.80);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    .foot-logo img {
+      height: 22px;
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 21px;
+      letter-spacing: -0.5px;
+      color: var(--t1);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .logo .chevron { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--t2);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.1px;
+    }
+    .nav-links a:hover { color: var(--t1); }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      color: var(--t1);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: var(--body);
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.06); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-family: var(--body);
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0,200,150,0.35);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 6% 100px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Deep animated gradient mesh */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 50% at 15% 60%, rgba(0,200,150,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 55% at 85% 25%, rgba(79,127,255,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 35% 40% at 55% 85%, rgba(240,180,41,0.05) 0%, transparent 55%);
+      animation: hpulse 10s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    /* Subtle grid overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+
+    @keyframes hpulse {
+      0%   { transform: scale(1);    opacity: 0.7; }
+      100% { transform: scale(1.06); opacity: 1;   }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,200,150,0.09);
+      border: 1px solid rgba(0,200,150,0.22);
+      border-radius: 100px;
+      padding: 6px 16px 6px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .badge-pulse {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 .accent  { color: var(--accent); }
+    .hero h1 .muted   { color: var(--t2); }
+
+    .hero-sub {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--t2);
+      line-height: 1.65;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.22s;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      font-family: var(--body);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,200,150,0.30);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--t1);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid var(--border-hi);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.22s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.18); }
+
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--t3);
+    }
+
+    .proof-avatars {
+      display: flex;
+    }
+    .proof-avatars span {
+      width: 27px; height: 27px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #000;
+      margin-right: -8px;
+    }
+
+    .proof-text strong { color: var(--accent); font-weight: 600; }
+
+    /* Hero right: floating card panel */
+    .hero-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-hi);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--t2);
+      letter-spacing: 0.3px;
+    }
+
+    .card-status {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .card-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .invoice-row {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .inv-left { display: flex; align-items: center; gap: 10px; }
+
+    .inv-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .inv-icon.logistics { background: rgba(79,127,255,0.15); }
+    .inv-icon.wholesale { background: rgba(240,180,41,0.15); }
+    .inv-icon.import    { background: rgba(0,200,150,0.12); }
+
+    .inv-company { font-size: 13px; font-weight: 600; color: var(--t1); }
+    .inv-industry { font-size: 11px; color: var(--t2); margin-top: 1px; }
+
+    .inv-right { text-align: right; }
+    .inv-amount { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--t1); }
+    .inv-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-top: 3px;
+    }
+    .badge-approved { background: rgba(0,200,150,0.12); color: var(--accent); }
+    .badge-pending  { background: rgba(240,180,41,0.12); color: var(--gold); }
+    .badge-review   { background: rgba(79,127,255,0.12); color: var(--blue); }
+
+    .card-total {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .total-label { font-size: 12px; color: var(--t2); font-weight: 500; }
+    .total-value {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    /* ─── STATS BAR ─── */
+    .statsbar {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      divide: none;
+    }
+
+    .stat-item {
+      padding: 32px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: var(--t1);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num .hi { color: var(--accent); }
+
+    .stat-desc {
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.4;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 96px 6%;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-top {
+      margin-bottom: 56px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .section-h {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-p {
+      color: var(--t2);
+      font-size: 17px;
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    .alt-bg { background: var(--bg1); }
+
+    /* ─── PROBLEM CARDS ─── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .problem-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 30px;
+      transition: all 0.3s;
+    }
+    .problem-card:hover {
+      background: rgba(255,80,80,0.04);
+      border-color: rgba(255,80,80,0.15);
+      transform: translateY(-3px);
+    }
+
+    .p-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(255,82,82,0.10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin: 0 auto 16px auto;
+    }
+
+    .problem-card h3 {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--t1);
+      text-align: center;
+    }
+
+    .problem-card p {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .step-card {
+      padding: 36px 32px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .step-card:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+    .step-card:last-child  { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+    .step-card + .step-card { border-left: none; }
+    .step-card:hover {
+      background: rgba(0,200,150,0.04);
+      border-color: rgba(0,200,150,0.18);
+      z-index: 1;
+    }
+
+    .step-number {
+      font-family: var(--display);
+      font-size: 52px;
+      font-weight: 900;
+      color: rgba(0,200,150,0.12);
+      line-height: 1;
+      margin-bottom: 14px;
+      letter-spacing: -2px;
+      text-align: center;
+    }
+
+    .step-ico {
+      width: 46px; height: 46px;
+      border-radius: 11px;
+      background: var(--accent-lo);
+      border: 1px solid var(--accent-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 18px auto;
+    }
+
+    .step-card h3 {
+      font-family: var(--display);
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--t1);
+      text-align: center;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .step-chip {
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      width: fit-content;
+      margin: 18px auto 0 auto;
+      gap: 5px;
+      padding: 4px 12px;
+      background: var(--accent-lo);
+      border: 1px solid var(--accent-md);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ─── WHY CREDIX ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 24px;
+      transition: all 0.3s;
+    }
+    .why-card:hover {
+      background: rgba(79,127,255,0.05);
+      border-color: rgba(79,127,255,0.22);
+      transform: translateY(-4px);
+    }
+
+    .w-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(79,127,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin: 0 auto 16px auto;
+    }
+
+    .why-card h3 {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--t1);
+      text-align: center;
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    /* ─── COMPARISON TABLE ─── */
+    .compare-wrap {
+      margin-top: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .compare-table th {
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--border);
+      color: var(--t2);
+      letter-spacing: 0.3px;
+    }
+
+    .compare-table th.credix { color: var(--accent); }
+
+    .compare-table td {
+      padding: 14px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+
+    .compare-table td.feature-name { color: var(--t2); font-weight: 500; font-size: 13px; }
+    .compare-table td.credix { color: var(--accent); font-weight: 600; }
+    .compare-table td.bad { color: #FF5252; }
+    .compare-table td.mid { color: var(--gold); }
+
+    .check { color: var(--accent); font-weight: 700; }
+    .cross { color: #FF5252; }
+
+    /* ─── WAITLIST SECTION ─── */
+    .waitlist-section {
+      text-align: center;
+      padding: 100px 6%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .waitlist-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,200,150,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .wl-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-box {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border-hi);
+      border-radius: 22px;
+      padding: 40px 36px;
+      margin-top: 48px;
+      text-align: left;
+      backdrop-filter: blur(8px);
+    }
+
+    .fg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .ff {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ff label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--t2);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .ff input,
+    .ff select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 9px;
+      padding: 12px 14px;
+      color: var(--t1);
+      font-size: 14px;
+      font-family: var(--body);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+      appearance: none;
+    }
+
+    .ff input::placeholder { color: var(--t3); }
+
+    .ff input:focus,
+    .ff select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,200,150,0.10);
+    }
+
+    .ff.full { grid-column: span 2; }
+
+    .ff select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A9BBE' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    .ff select option { background: #0A1929; }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--body);
+      transition: all 0.22s;
+      letter-spacing: 0.1px;
+      margin-top: 4px;
+    }
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 26px rgba(0,200,150,0.28);
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--t3);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    .success-box {
+      display: none;
+      background: rgba(0,200,150,0.07);
+      border: 1px solid rgba(0,200,150,0.22);
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .success-box h3 {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .success-box p {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.6;
+    }
+
+    .success-box a { color: var(--accent); }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 6px 12px;
+
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 999px;
+
+      color: #25D366;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn img {
+      width: 16px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      padding: 32px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .foot-logo {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--t1);
+      text-decoration: none;
+    }
+    .foot-logo .chevron { color: var(--accent); }
+
+    .foot-links {
+      display: flex;
+      gap: 24px;
+    }
+    .foot-links a {
+      color: var(--t2);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .foot-links a:hover { color: var(--t1); }
+
+    .foot-copy { width: 100%; text-align: center; font-size: 12px; color: var(--t3); }
+
+    /* ─── ANIMATIONS ─── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    [data-reveal].shown {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card  { display: none; }
+      .steps-row  { grid-template-columns: 1fr; }
+      .step-card:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+      .step-card:last-child  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+      .step-card + .step-card { border-left: 1px solid var(--border); border-top: none; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .problem-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+      .nav-btn { display: none; }
+      .hero { padding: 100px 5% 60px; }
+      section, .section { padding: 64px 5%; }
+      .waitlist-section { padding: 64px 5%; }
+      .form-box { padding: 28px 20px; }
+      .fg { grid-template-columns: 1fr; }
+      .ff.full { grid-column: span 1; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .compare-wrap { overflow-x: auto; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <img src="assets/logo.png" alt="CrediX Logo" class="logo">
-</div>
-
-<div class="container">
-
-<!-- HERO -->
-<div class="hero glass">
-  <div class="hero-text">
-    <h1>Stop Waiting Months to Get Paid</h1>
-    <p>Turn your unpaid invoices into cash in <b>24–72 hours.</b></p>
-    <p>Built for Sri Lankan SMEs dealing with slow-paying customers.</p>
-
-    <p class="urgency">⚠️ Limited early access</p>
-    <p class="counter">🔥 26 businesses already joined</p>
-
-    <a href="#form" class="btn">Get Early Access</a>
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <img src="assets/logo.png" alt="CrediX Logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">The problem</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#why">Why CrediX</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="mailto:contact@credix.lk" class="nav-btn">Contact</a>
+    <a href="#waitlist" class="nav-cta">Get Early Access</a>
   </div>
+</nav>
 
-  <div class="hero-visual"></div>
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        Sri Lanka's first B2B invoice financing platform
+      </div>
+
+      <h1>
+        Your invoices<br>
+        are <span class="accent">money.</span><br>
+        <span class="muted">Stop Waiting</br>Months to Get Paid.</span>
+      </h1>
+
+      <p class="hero-sub">
+        CrediX converts your unpaid B2B invoices into working capital in 24 - 72 hours. No collateral. No bank queues. Just the cash you've already earned.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary">
+          Join the Waitlist
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#how" class="btn-ghost">See how it works</a>
+      </div>
+
+      <div class="hero-social-proof">
+        <div class="proof-avatars">
+          <span style="background:#4F7FFF;">IC</span>
+          <span style="background:#00C896;">CS</span>
+          <span style="background:#F0B429;">LP</span>
+          <span style="background:#FF5252;">ME</span>
+        </div>
+        <p class="proof-text">
+          <strong>16 businesses</strong> already joined the waitlist
+        </p>
+      </div>
+    </div>
+
+    <!-- Floating invoice panel (right side) -->
+    <div class="hero-card" data-reveal>
+      <div class="card-header">
+        <span class="card-title">Recent Invoices</span>
+        <span class="card-status">Live Dashboard</span>
+      </div>
+
+      <div class="invoice-row">
+        <div class="inv-left">
+          <div class="inv-icon logistics">🚛</div>
+          <div>
+            <div class="inv-company">Colombo Freight Ltd</div>
+            <div class="inv-industry">Logistics · Net - 60</div>
+          </div>
+        </div>
+        <div class="inv-right">
+          <div class="inv-amount">LKR 480,000</div>
+          <span class="inv-badge badge-approved">Approved</span>
+        </div>
+      </div>
+
+      <div class="invoice-row">
+        <div class="inv-left">
+          <div class="inv-icon wholesale">📦</div>
+          <div>
+            <div class="inv-company">Nexus Wholesale Pvt</div>
+            <div class="inv-industry">Wholesale · Net - 45</div>
+          </div>
+        </div>
+        <div class="inv-right">
+          <div class="inv-amount">LKR 325,000</div>
+          <span class="inv-badge badge-pending">Pending</span>
+        </div>
+      </div>
+
+      <div class="invoice-row">
+        <div class="inv-left">
+          <div class="inv-icon import">🌏</div>
+          <div>
+            <div class="inv-company">Lanka Imports Co.</div>
+            <div class="inv-industry">Import/Export · Net - 90</div>
+          </div>
+        </div>
+        <div class="inv-right">
+          <div class="inv-amount">LKR 760,000</div>
+          <span class="inv-badge badge-review">In Review</span>
+        </div>
+      </div>
+
+      <div class="card-total">
+        <span class="total-label">Total Unlocked This Week</span>
+        <span class="total-value">LKR 1.26M</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<div class="statsbar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num"><span class="hi">24</span> - 72h</div>
+      <div class="stat-desc">Average time to cash</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="hi">80</span>%</div>
+      <div class="stat-desc">Of invoice value, upfront</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3 - <span class="hi">6</span>%</div>
+      <div class="stat-desc">Transparent service fee</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="hi">0</span>%</div>
+      <div class="stat-desc">Collateral required</div>
+    </div>
+  </div>
 </div>
 
-<!-- PROBLEM -->
-<div class="section">
-<h2>Delayed Payments Are Holding Your Business Back</h2>
+<!-- ─── PROBLEM ─── -->
+<section class="section alt-bg" id="problem">
+  <div class="section-inner">
+    <div class="section-top" data-reveal>
+      <span class="eyebrow">The problem</span>
+      <h2 class="section-h">Sri Lanka's SMEs are trapped<br>in a permanent cash flow crisis.</h2>
+      <p class="section-p">You've done the work. You issued the invoice. But your business is stuck waiting on average 30, 60, even 90 days to see that money.</p>
+    </div>
 
-<div class="grid">
-  <div class="card glass">You’ve done the work but still waiting to get paid</div>
-  <div class="card glass">Cash flow gaps slow operations</div>
-  <div class="card glass">Overdrafts eat into profits</div>
-</div>
+    <div class="problem-grid">
+      <div class="problem-card" data-reveal>
+        <div class="p-icon">⏳</div>
+        <h3>30 - 90 Day Payment Cycles</h3>
+        <p>Buyers demand extended credit terms. You deliver the goods, issue the invoice, then wait months to be paid creating a permanent, compounding liquidity gap.</p>
+      </div>
+      <div class="problem-card" data-reveal style="transition-delay:.08s">
+        <div class="p-icon">🏦</div>
+        <h3>Banks are Too Slow and Exclusive</h3>
+        <p>Traditional invoice discounting requires 1 - 3 weeks, heavy documentation, property collateral, and a CRIB score. Most SMEs don't qualify and those who do still wait too long.</p>
+      </div>
+      <div class="problem-card" data-reveal style="transition-delay:.13s">
+        <div class="p-icon">💸</div>
+        <h3>Overdrafts are a Debt Trap</h3>
+        <p>~60% of Sri Lankan SMEs rely on high-interest overdrafts to survive cash flow gaps. You end up paying 18% - 24% per year to access money you've already earned.</p>
+      </div>
+      <div class="problem-card" data-reveal style="transition-delay:.18s">
+        <div class="p-icon">📊</div>
+        <h3>No Credit History = No Growth</h3>
+        <p>Without a formal financial track record, SMEs remain invisible to capital. Every year without data is another year of being locked out of the credit system.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p><b>Your money is stuck in invoices.</b></p>
-</div>
+<!-- ─── HOW IT WORKS ─── -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="section-top" data-reveal>
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-h">Three steps. Working capital<br>in under 72 hours.</h2>
+      <p class="section-p">No branch visits. No paperwork piles. No waiting weeks for an answer.</p>
+    </div>
 
-<!-- FORM -->
-<div class="section" id="form">
-<h2>Secure Your Spot in the First Batch</h2>
+    <div class="steps-row">
+      <div class="step-card" data-reveal>
+        <div class="step-number">01</div>
+        <div class="step-ico">📄</div>
+        <h3>Upload Your Invoice</h3>
+        <p>Submit your unpaid B2B invoice through the CrediX app. Add buyer details, amount, and due date. The whole submission takes under 5 minutes.</p>
+        <span class="step-chip">⚡ 5 minutes</span>
+      </div>
+      <div class="step-card" data-reveal style="transition-delay:.1s">
+        <div class="step-number">02</div>
+        <div class="step-ico">🔍</div>
+        <h3>We Score and Verify</h3>
+        <p>Our AI-assisted Blockchain-verified credit scoring system evaluates buyer reliability, invoice credibility, and industry risk. Our team reviews and approves. No branch visits. No lengthy forms.</p>
+        <span class="step-chip">⚡ Under 24 hours</span>
+      </div>
+      <div class="step-card" data-reveal style="transition-delay:.2s">
+        <div class="step-number">03</div>
+        <div class="step-ico">💳</div>
+        <h3>Receive Your Cash</h3>
+        <p>80% of your invoice value lands in your account immediately. When your buyer pays on the due date, you receive the balance minus our transparent fee. No surprises.</p>
+        <span class="step-chip">⚡ 24 - 72 hours</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="form-card glass">
+<!-- ─── WHY CREDIX ─── -->
+<section class="section alt-bg" id="why">
+  <div class="section-inner">
+    <div class="section-top" data-reveal>
+      <span class="eyebrow">Why CrediX</span>
+      <h2 class="section-h">Built for the way Sri Lankan<br>businesses actually work.</h2>
+      <p class="section-p">Not a bank product adapted for Sri Lanka — a platform built from the ground up for the realities of local B2B trade.</p>
+    </div>
 
-<form action="https://api.forminit.com/io3k0xg6ku" method="POST">
+    <div class="why-grid">
+      <div class="why-card" data-reveal>
+        <div class="w-icon">🏁</div>
+        <h3>First to Market in Sri Lanka</h3>
+        <p>No dominant B2B invoice financing fintech exists here. CrediX is building the category and the network effects from day one.</p>
+      </div>
+      <div class="why-card" data-reveal style="transition-delay:.06s">
+        <div class="w-icon">🤖</div>
+        <h3>AI-powered Credit Decisions</h3>
+        <p>Our proprietary scoring system analyses buyer payment behaviour, industry risk, and invoice patterns to deliver fast, accurate financing decisions.</p>
+      </div>
+      <div class="why-card" data-reveal style="transition-delay:.10s">
+        <div class="w-icon">⚡</div>
+        <h3>Banks take 3 Weeks. We take 72 Hours</h3>
+        <p>Traditional invoice discounting is slow and documentation-heavy. CrediX is purpose-built for speed. A decision in hours, not weeks.</p>
+      </div>
+      <div class="why-card" data-reveal style="transition-delay:.14s">
+        <div class="w-icon">📈</div>
+        <h3>Your Credit Identity Grows with You</h3>
+        <p>Every invoice financed builds your financial track record. As your data grows, your access to capital improves automatically.</p>
+      </div>
+      <div class="why-card" data-reveal style="transition-delay:.18s">
+        <div class="w-icon">🔒</div>
+        <h3>Transparent, Verified, Secure</h3>
+        <p>Blockchain-verified invoices and an honest fee structure (3 - 6%). You know exactly what you pay before you submit. Zero hidden charges.</p>
+      </div>
+      <div class="why-card" data-reveal style="transition-delay:.22s">
+        <div class="w-icon">🌏</div>
+        <h3>Asset-Light & Regionally Scalable.</h3>
+        <p>Start with your Sri Lankan operations. The same platform, data infrastructure, and trust layer scales across South Asia as you grow.</p>
+      </div>
+    </div>
 
-  <input type="text" name="fi-sender-fullName" placeholder="Your Name" required>
-  <input type="email" name="fi-sender-email" placeholder="Email Address" required>
-  <input type="tel" name="fi-sender-phone" placeholder="Phone Number" required>
+    <!-- Comparison table -->
+    <div style="margin-top: 56px;">
+      <div class="section-top" style="margin-bottom: 28px;" data-reveal>
+        <span class="eyebrow">At a Glance</span>
+        <h3 style="font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-0.5px;">CrediX vs. the Alternatives</h3>
+      </div>
+      <div class="compare-wrap" data-reveal>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="width:30%">Feature</th>
+              <th class="credix">CrediX</th>
+              <th>Large banks</th>
+              <th>Microfinance</th>
+              <th>Overdraft</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">Speed to cash</td>
+              <td class="credix">24 - 72 hours</td>
+              <td class="mid">1 - 3 weeks</td>
+              <td class="mid">Days - Weeks</td>
+              <td class="check">Instant</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Collateral Required</td>
+              <td class="credix">None</td>
+              <td class="bad">Yes </br>(Property)</td>
+              <td class="mid">Sometimes</td>
+              <td class="bad">Yes</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Effective Annual Cost</td>
+              <td class="credix">~3 - 6% per Invoice</td>
+              <td class="mid">12 - 18%</td>
+              <td class="bad">24 - 36%+</td>
+              <td class="bad">18 - 24%</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Builds Credit Profile</td>
+              <td class="credix">✓ Yes</td>
+              <td>Minimal</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Invoice-Based </br>(No Asset Tie)</td>
+              <td class="credix">✓ Yes</td>
+              <td class="bad">No</td>
+              <td class="bad">No</td>
+              <td class="bad">No</td>
+            </tr>
+            <tr>
+              <td class="feature-name">100% Digital</td>
+              <td class="credix">✓ Yes</td>
+              <td class="bad">No</td>
+              <td class="bad">No</td>
+              <td class="mid">Partially</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <textarea name="fi-text-message" placeholder="Business Name:
-Industry:
-Monthly Revenue:
-Invoice Value:" required></textarea>
+<!-- ─── WAITLIST ─── -->
+<section class="waitlist-section" id="waitlist">
+  <div class="wl-inner">
+    <span class="eyebrow">Early access</span>
+    <h2 class="section-h">Secure Your Spot.<br>First Come, First Financed.</h2>
+    <p class="section-p" style="margin:0 auto;text-align:center;">
+      Beta access is limited to <strong style="color:var(--t1)">35 SMEs</strong>. We review every application personally and reach out within 48 hours.
+    </p>
 
-  <button class="btn" type="submit">Join the Waiting List</button>
+    <div class="form-box">
+      <form id="wl-form">
+        <div class="fg">
+          <div class="ff">
+            <label>Your name</label>
+            <input type="text" name="name" placeholder="Priya Fernando" required>
+          </div>
+          <div class="ff">
+            <label>Business name</label>
+            <input type="text" name="business" placeholder="Fernando Trading Pvt Ltd" required>
+          </div>
+          <div class="ff">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" name="phone" placeholder="+94 77 000 0000" required>
+          </div>
+          <div class="ff">
+            <label>Email address</label>
+            <input type="email" name="email" placeholder="you@company.lk" required>
+          </div>
+          <div class="ff full">
+            <label>Industry</label>
+            <select name="industry" required>
+              <option value="" disabled selected>Select your industry</option>
+              <option>Logistics &amp; Transport</option>
+              <option>Wholesale &amp; Distribution</option>
+              <option>Import / Export</option>
+              <option>Manufacturing</option>
+              <option>Construction &amp; Engineering</option>
+              <option>IT &amp; Professional Services</option>
+              <option>Food &amp; Beverage</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="ff full">
+            <label>Average monthly invoice value</label>
+            <select name="invoice_volume" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>Under LKR 100,000</option>
+              <option>LKR 100,000 – 500,000</option>
+              <option>LKR 500,000 – 2,000,000</option>
+              <option>LKR 2,000,000+</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Join the Waitlist — Free &amp; No Commitments →</button>
+        <p class="form-note">We'll contact you personally within 48 hours </br>You can also WhatsApp us directly </br> <a href="https://wa.me/94710838717" class="whatsapp-btn" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+          Chat on WhatsApp
+        </a>.</p>
+      </form>
 
-</form>
+      <div class="success-box" id="wl-success">
+        <div style="font-size:40px;margin-bottom:12px;">🎉</div>
+        <h3>You're on the List.</h3>
+        <p>We'll reach out personally within 48 hours to learn about your business and get you set up for beta access<br><br>
+        Questions? </br> <a href="https://wa.me/94710838717" class="whatsapp-btn" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+          Chat on WhatsApp
+        </a></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
-</div>
+<!-- ─── FOOTER ─── -->
+<footer>
+  <a href="#" class="foot-logo">
+  <img src="assets/logo.png" alt="CrediX Logo">
+</a>>
+  <div class="foot-links">
+    <a href="mailto:contact@credix.lk">contact@credix.lk</a>
+    <a href="https://wa.me/94710838717">WhatsApp</a>
+    <a href="#how">How it works</a>
+    <a href="#waitlist">Get early access</a>
+  </div>
+  <div class="foot-copy"> © 2026 CrediX Private Limited · Sri Lanka</div>
+</footer>
 
-<!-- FOOTER -->
-<div class="footer">
-  <img src="assets/logo.png" class="footer-logo">
-  <p>Financing the future of SME cash flow</p>
-  <p>contact@credix.lk</p>
-</div>
+<script>
+  /* ─── Scroll reveal ─── */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('shown'); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
 
-</div>
+  /* ─── Nav scroll effect ─── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.style.background = window.scrollY > 60
+      ? 'rgba(3,12,26,0.96)'
+      : 'rgba(3,12,26,0.80)';
+  });
 
-<a class="whatsapp" href="https://wa.me/94710838717">WhatsApp</a>
+  /* ─── Waitlist form ─── */
+  document.getElementById('wl-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
+    const btn = this.querySelector('.submit-btn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    // ── INTEGRATE YOUR FORM ENDPOINT HERE ──
+    // Option A: Formspree  →  fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} })
+    // Option B: Google Sheets via Apps Script  →  fetch('YOUR_APPS_SCRIPT_URL', { method:'POST', body: JSON.stringify(Object.fromEntries(new FormData(this))) })
+    // Option C: Netlify Forms (add netlify attribute to <form>) — no JS required
+    // For now, simulate success after 800ms:
+    setTimeout(() => {
+      this.style.display = 'none';
+      document.getElementById('wl-success').style.display = 'block';
+    }, 800);
+  });
+
+  /* ─── Smooth anchor scroll ─── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
 </body>
 </html>
