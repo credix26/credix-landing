@@ -39,7 +39,7 @@ export default function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-2 self-start bg-teal/10 border border-teal/25 text-teal text-xs font-mono px-3 py-1.5 rounded-full"
+            className="inline-flex items-center gap-2 self-center lg:self-start bg-teal/10 border border-teal/25 text-teal text-xs font-mono px-3 py-1.5 rounded-full"
           >
             <Zap size={11} />
             Sri Lanka's first AI invoice financing platform
