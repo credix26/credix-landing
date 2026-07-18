@@ -437,7 +437,7 @@ export default function Invoice3D() {
           <MeshTransmissionMaterial
             backside
             backsideThickness={0.2}
-            samples={8}
+            samples={4}
             thickness={0.12}
             roughness={0.1}
             transmission={0.97}

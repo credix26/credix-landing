@@ -26,7 +26,7 @@ export default function HeroSection() {
         style={{
           background:
             'radial-gradient(ellipse 70% 80% at 60% 50%, rgba(0,212,255,0.10) 0%, rgba(0,200,150,0.08) 40%, transparent 70%)',
-          filter: 'blur(40px)',
+          filter: 'blur(28px)',
         }}
       />
 
@@ -79,7 +79,7 @@ export default function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
             <a
               href="#waitlist"
@@ -102,7 +102,7 @@ export default function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-3 self-start glass rounded-2xl pl-3 pr-5 py-2.5 mt-1"
+            className="inline-flex items-center gap-3 self-center lg:self-start glass rounded-2xl pl-3 pr-5 py-2.5 mt-1"
           >
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-teal/15 border border-teal/30 shrink-0">
               <ShieldCheck size={14} className="text-teal" />
@@ -135,7 +135,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs font-mono text-text-muted pointer-events-none"
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full text-center px-4 text-xs font-mono text-text-muted pointer-events-none"
           >
             click the invoice to reveal AI scoring ↑
           </motion.p>

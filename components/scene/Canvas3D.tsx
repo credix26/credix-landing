@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, Lightformer, Preload } from '@react-three/drei'
 
@@ -26,17 +26,35 @@ interface Canvas3DProps {
 }
 
 export default function Canvas3D({ children, className }: Canvas3DProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(true)
+
+  /* Fully stop the render loop while the canvas is scrolled out of view —
+     an always-on WebGL scene competing with scroll compositing is the main
+     cause of mobile scroll jank on this page. */
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: '200px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className={className ?? 'w-full h-full'}>
+    <div ref={containerRef} className={className ?? 'w-full h-full'}>
       <Suspense fallback={<Loader />}>
         <Canvas
+          frameloop={inView ? 'always' : 'never'}
           camera={{ position: [0, 0, 5.5], fov: 42 }}
           gl={{
             antialias: true,
             alpha: true,
             powerPreference: 'high-performance',
           }}
-          dpr={[1, 2]}
+          dpr={[1, 1.5]}
           style={{ background: 'transparent' }}
         >
           {/* Ambient and directional lights */}

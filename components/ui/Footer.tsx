@@ -59,7 +59,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-navy-mid">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-mono text-xs text-text-dim">
+          <p className="font-mono text-xs text-text-dim text-center">
             © 2026 Credix Private Limited. Registered in Sri Lanka &amp; Singapore.
           </p>
           <p className="font-mono text-xs text-text-dim">
