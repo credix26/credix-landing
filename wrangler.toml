@@ -1,5 +1,8 @@
 name = "credix-landing"
+main = "src/index.js"
 compatibility_date = "2026-07-18"
 
 [assets]
 directory = "out"
+binding = "ASSETS"
+run_worker_first = true
