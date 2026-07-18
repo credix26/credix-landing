@@ -41,8 +41,8 @@ export default function HeroSection() {
             animate="visible"
             className="inline-flex items-center gap-2 self-center lg:self-start bg-teal/10 border border-teal/25 text-teal text-xs font-mono px-3 py-1.5 rounded-full"
           >
-            <Zap size={11} />
-            Sri Lanka's first AI invoice financing platform
+            <Zap size={11} className="shrink-0" />
+            <span className="text-center">Sri Lanka's first AI invoice financing platform</span>
           </motion.div>
 
           {/* Headline */}
