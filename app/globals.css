@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void:        #04060C;
+  --navy:        #0A1628;
+  --navy-mid:    #1A2B4A;
+  --teal:        #00C896;
+  --teal-dim:    #00A87B;
+  --gold:        #EAA800;
+  --cyan:        #00D4FF;
+  --text:        #F0F4F8;
+  --text-muted:  #7BA4C0;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--void);
+}
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--navy-mid); border-radius: 2px; }
+
+/* Selection */
+::selection { background: rgba(0,200,150,0.25); color: #fff; }
+
+/* Glassmorphism base utility */
+.glass {
+  background: rgba(10, 22, 40, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(26, 43, 74, 0.8);
+}
+
+/* Teal glow on hover */
+.teal-hover {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.teal-hover:hover {
+  box-shadow: 0 0 0 1px rgba(0,200,150,0.4), 0 8px 32px rgba(0,200,150,0.12);
+  border-color: rgba(0,200,150,0.4) !important;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00C896 0%, #00D4FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section fade-up anchor */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+/* Custom focus ring */
+*:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
